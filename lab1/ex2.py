@@ -19,7 +19,7 @@ def z(t):
 
 #punctul d
 def w(t):
-    freq = 3
+    freq = 300
     phase = 0
     signal = np.sign(np.sin(freq * 2 * np.pi * t + phase)) # prima valoare va fi 0 pt ca asa functioneaza sign..... dar mi-e prea lene sa folosesc np.where
     signal[0] = 1
@@ -40,16 +40,19 @@ n = 4
 fig, axs = plt.subplots(n)
 fig.suptitle('Exercitiul 2: semnale 1D')
 # punctul a
-axs[0].stem(timp_esantion, x(timp_esantion))
+markers, stemlines, base = axs[0].stem(timp_esantion, x(timp_esantion))
 #punctul b
-axs[1].plot(timp_b,y(timp_b))
+axs[1].plot(timp_b,y(timp_b),linewidth=0.125)
 # punctul c
-axs[2].plot(timp,z(timp))
+axs[2].plot(timp,z(timp),linewidth=0.25)
 # punctul d
-axs[3].plot(timp,w(timp))
-# punctul e
+axs[3].plot(timp,w(timp),linewidth=0.25)
+# formatare :p
+plt.setp(stemlines, linewidth=0.25)
+plt.setp(markers, markersize=0.5)
 plt.show()
 
+# punctul e, f
 fig, axs = plt.subplots(2)
 fig.suptitle('Exercitiul 2: 2D')
 axs[0].imshow(img_1)
